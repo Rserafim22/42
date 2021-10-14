@@ -6,7 +6,7 @@
 /*   By: rserafim <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 11:03:27 by rserafim          #+#    #+#             */
-/*   Updated: 2021/10/13 11:37:00 by rserafim         ###   ########.fr       */
+/*   Updated: 2021/10/14 11:21:52 by rserafim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,6 @@ int	ft_isascii(int c);
 int	ft_isprint(int c);
 int	ft_toupper(int c);
 int	ft_tolower(int c);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 #endif

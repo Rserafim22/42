@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rserafim <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 09:21:00 by rserafim          #+#    #+#             */
-/*   Updated: 2021/10/14 14:20:18 by rserafim         ###   ########.fr       */
+/*   Created: 2021/10/14 13:14:26 by rserafim          #+#    #+#             */
+/*   Updated: 2021/10/14 13:41:41 by rserafim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
-
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+#include "libft.h"
+char	*ft_strchr(const char *s, int c)
 {
-	size_t  i;
+	int i;
 
 	i = 0;
-	if (n == i)
-		return (0);
-	while ( s1[i] == s2[i] && s1[i] != '\0' && i < n)
+//	if (c == '\0')
+//		return (ft_strlen(s) - 1);
+	while (s[i] != '\0')
 	{
-		i++;
+		if (s[i] == c)
+			return ((char *)s + i);
+		i++;	
 	}
-	return (s1[i] - s2[i]);
+	return (NULL);
 }
-
-int	main(void)
+int	main()
 {
-	const char *s1 = "lloldsfs";
-	const char *s2 = "lo";
-	size_t n = 0;
-
-	printf("%d\n", strncmp(s1,s2,n));
-	printf("%d\n", ft_strncmp(s1,s2,n));
+	const char *s = "salut";
+	int	c = 't';
+	printf("%s\n", strchr(s,c));
+	printf("%s\n", ft_strchr(s,c));
 }
