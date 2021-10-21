@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlcat.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rserafim <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/13 10:08:18 by rserafim          #+#    #+#             */
-/*   Updated: 2021/10/13 11:36:06 by rserafim         ###   ########.fr       */
+/*   Created: 2021/10/18 15:31:03 by rserafim          #+#    #+#             */
+/*   Updated: 2021/10/20 13:56:33 by rserafim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
+	size_t	j;
 
 	i = 0;
-	while (i < strlen(dst))
+	if (size == 0)
+		return (ft_strlen(src));
+	while (dst[i] != '\0' && i < size)
 		i++;
-	return (i + size);
+	j = i;
+	while (src[i - j] != '\0' && i < size - 1)
+	{
+		dst[i] = src[i - j];
+		i++;
+	}
+	if (j < size)
+		dst[i] = '\0';
+	return (j + ft_strlen(src));
 }
-/*
-int	main(void)
-{
-	char *dst = "WORLD";
-	const char *src = "hello";
-	size_t size = 0;
-
-	printf("%lu\n", strlcat(dst, src,size));
-	printf("%lu\n", ft_strlcat(dst, src,size));
-}*/

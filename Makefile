@@ -1,22 +1,33 @@
-DIR_LIB = ./42
+SRCSDIR        = ./
 
-prog : ft_isalnum.o ft_isdigit.o ft_isalpha.o
-	gcc -o prog ft_isalnum.o ft_isdigit.o ft_isalpha.o libft.o
+SRCS            = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c ft_atoi.c ft_strdup.c ft_calloc.c
 
-libft.o : libft.h
-	gcc -o libft.o -c libft.h
+SRCSPATH    = ${patsubst %,${SRCSDIR}%,${SRCS}}
 
-ft_isalnum.o : ft_isalnum.c libft.o ft_isdigit.o ft_isalpha.o
-	gcc -o ft_isalnum.o -c ft_isalnum.c -Wall -Wextra -Werror
+OBJS        = ${SRCSPATH:.c=.o}
 
-ft_isdigit.o : ft_isdigit.c
-	gcc -o ft_isdigit.o -c ft_isdigit.c -Wall -Wextra -Werror
+NAME        = libft.a
 
-ft_isalpha.o : ft_isalpha.c
-	gcc -o ft_isalpha.o -c ft_isalpha.c -Wall -Wextra -Werror
-	
+CC        = gcc
+RM        = rm -f
 
-all: prog
+CFLAGS        = -Wall -Wextra -Werror
 
-clean :
-	rm *.o
+.c.o:
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+${NAME}:	${OBJS}
+	ar rc ${NAME} ${OBJS}
+
+all:	${NAME}
+
+clean:
+	${RM} ${OBJS}
+
+fclean:        clean
+	${RM} ${NAME}
+
+re:        fclean all
+
+.PHONY:        all clean fclean re
+

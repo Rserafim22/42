@@ -6,31 +6,28 @@
 /*   By: rserafim <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/11 13:12:38 by rserafim          #+#    #+#             */
-/*   Updated: 2021/10/11 17:30:37 by rserafim         ###   ########.fr       */
+/*   Updated: 2021/10/20 13:52:09 by rserafim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
-/*
-int	ft_strlcpy(const char *src, char *dest, size_t size)
-
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t	sizeee;
-	int i;
+	size_t	i;
 
-	sizeee = 0;
 	i = 0;
-	while (src[i] != '\0' && i < size - 1)
+	if (0 < size)
 	{
-		i++;
-		sizeee++;
+		while (src[i] != '\0' && i < size - 1)
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	i = 0;
-	dest[i] = '\0';
-	return (sizeee);
+	return (ft_strlen(src));
 }
-*/
+/*
 int main ()
 {
 	char src[] = "hello world";
@@ -38,4 +35,4 @@ int main ()
 	size_t size = 6;
 //	printf("%lu\n", ft_strlcpy(src, dest, size));
 	printf("%lu", strlcpy(dest, src, size));
-}
+}*/
