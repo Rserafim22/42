@@ -1,4 +1,3 @@
-//creer fonction boucle nb => str
 #include "libft.h"
 size_t	ft_nb_len(int n)
 {
@@ -17,18 +16,10 @@ size_t	ft_nb_len(int n)
 	}
 	return (count);
 }
-char *ft_itoa(int n)
+char	*while_itoa(char *str, size_t size, int nb)
 {
-	char *str;
-	size_t size;
 	size_t i;
-	int nb;
 
-	if (n >= 2147483647 || n <= -214783648)
-		return (NULL);
-	nb = n;
-	size = ft_nb_len(n);
-	str = malloc((sizeof(char) * size) + 1);
 	i = size;
 	if (nb == 0)
 		str[0] = '0';
@@ -45,8 +36,21 @@ char *ft_itoa(int n)
 	str[size + 1] = '\0';
 	return (str);
 }
+char *ft_itoa(int n)
+{
+	char *str;
+	size_t size;
+	int nb;
+
+	if (n >= 2147483647 || n <= -214783648)
+		return (NULL);
+	nb = n;
+	size = ft_nb_len(n);
+	str = malloc((sizeof(char) * size) + 1);
+	return (while_itoa(str, size, nb));
+}
 
 int main()
 {
-	printf("%s\n", ft_itoa(473295));
+	printf("%s\n", ft_itoa(-1));
 }
